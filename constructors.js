@@ -31,6 +31,7 @@
 // -- ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ - Your Answer - ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ -- //
 
 var Foo = (function() {
+
     function Foo() {
 
     };
@@ -91,7 +92,22 @@ console.assert(new Dog().says === "life is ruff");
 
 // -- ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ - Your Answer - ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ -- //
 
+var Cat = (function(){
 
+    function Cat() {
+
+    };
+
+    Cat.prototype = {
+        growl: function() {
+            return "meow";
+        }
+    };
+    return Cat;
+
+})();
+
+var cat = new Cat();
 
 // -- ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ -- //
 
@@ -114,6 +130,21 @@ console.assert(cat.growl() === "meow");
 
 // -- ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ - Your Answer - ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ -- //
 
+var KeepSecret = (function(){
+    var theSecret;
+
+    function KeepSecret(secret) {
+        theSecret = secret;
+    };
+
+    KeepSecret.prototype = {
+        squeal: function() {
+            return theSecret;
+        }
+    };
+
+    return KeepSecret;
+})();
 
 
 // -- ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ -- //
@@ -142,6 +173,43 @@ console.assert(dontTellNobody.squeal() === mySecret);
 // the secret data.
 
 // -- ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ - Your Answer - ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ -- //
+
+
+// Key constructor
+var Key = (function(){
+
+    function Key() {
+
+    };
+
+    return Key;
+})();
+
+
+// instance of Key constructor
+var key = new Key();
+
+// Safe constructor
+var Safe = (function(){
+    // private variables
+    var safeData;
+    var safeKey;
+
+    function Safe(data, key) {
+        safeData = data;
+        safeKey = key;
+    };
+
+    Safe.prototype = {
+        unlock: function(key) {
+            if( key === safeKey) {
+                return safeData;
+            }
+        }
+    };
+
+    return Safe;
+})();
 
 
 
