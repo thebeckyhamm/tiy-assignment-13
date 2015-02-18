@@ -257,19 +257,7 @@ var Validator = (function(){
         email: function(string) {
             var chars = string.split("");
 
-            var checkChars = function() {
-                var relevantChars = [];
-
-                _.each(chars, function(char){
-                    if (char === "@" || char === ".") {
-                        relevantChars.push(char);
-                    }
-                });
-
-                return relevantChars.join("");
-            };
-
-            var checkString = function() {
+            var checkEnds = function() {
                 if (chars.length <= 4) {
                     return false;
                 }
@@ -280,14 +268,46 @@ var Validator = (function(){
                 if ( (chars[chars.length - 1] === ".") || (chars[chars.length - 1] === "@") )  {
                     return false;
                 }
-                return true;
-            }
+                else {
+                    return true; 
+                }
+            };
 
 
-            if ((checkChars() === "@.") && checkString()) {
+            var checkBetween = function() {
+                var start = _.indexOf(chars, "@");
+                var end = _.lastIndexOf(chars, ".");
+                var middleChars = chars.slice((start + 1), end);
+
+                var badChars = function() {
+                    if (_.contains(middleChars, "@")){
+                        return true;
+                    }
+                    else if (_.contains(middleChars, ".")) {
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                };
+                if (start === -1 || end === -1) {
+                    return false;
+                }
+                else if (middleChars.length < 1 || badChars()) {
+                    return false;
+                }
+                else {
+                    return true;    
+                }
+            };
+ 
+
+            if (checkEnds() && checkBetween()) {
                 return true;
             }
-            return false;
+            else {
+                return false;
+            }
         }
     };
 
