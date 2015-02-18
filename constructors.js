@@ -269,8 +269,22 @@ var Validator = (function(){
                 return relevantChars.join("");
             };
 
+            var checkString = function() {
+                if (chars.length <= 4) {
+                    return false;
+                }
+                if ( (chars[0] === "@") || chars[0] === "." ) {
+                    return false;
+                }
 
-            if (checkChars() === "@.") {
+                if ( (chars[chars.length - 1] === ".") || (chars[chars.length - 1] === "@") )  {
+                    return false;
+                }
+                return true;
+            }
+
+
+            if ((checkChars() === "@.") && checkString()) {
                 return true;
             }
             return false;
