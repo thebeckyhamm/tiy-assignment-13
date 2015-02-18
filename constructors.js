@@ -247,6 +247,25 @@ console.assert(safe.unlock(rightKey) === sensitive);
 
 // -- ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ - Your Answer - ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ -- //
 
+var Validator = (function(){
+
+    function Validator() {
+
+    };
+
+    Validator.prototype = {
+        email: function(string) {
+            var chars = string.split("");
+            if( (_.contains(chars, "@")) && (_.contains(chars, ".")) ) {
+                return true;
+            }
+            return false;
+        }
+    };
+
+    return Validator;
+
+})();
 
 
 // -- ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ -- //

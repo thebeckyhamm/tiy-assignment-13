@@ -1,0 +1,22 @@
+{
+  "name": "tiy-assignment-13",
+  "version": "0.0.0",
+  "authors": [
+    "Becky Hamm <becky@metricslice.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "underscore": "~1.7.0"
+  },
+  "dependencies": {
+    "underscore": "~1.7.0"
+  }
+}
