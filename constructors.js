@@ -256,7 +256,21 @@ var Validator = (function(){
     Validator.prototype = {
         email: function(string) {
             var chars = string.split("");
-            if( (_.contains(chars, "@")) && (_.contains(chars, ".")) ) {
+
+            var checkChars = function() {
+                var relevantChars = [];
+
+                _.each(chars, function(char){
+                    if (char === "@" || char === ".") {
+                        relevantChars.push(char);
+                    }
+                });
+
+                return relevantChars.join("");
+            };
+
+
+            if (checkChars() === "@.") {
                 return true;
             }
             return false;
