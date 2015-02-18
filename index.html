@@ -3,10 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>TIY Assignment 13: Constructors</title>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/underscore/underscore-min.js"></script>
+    <script src= "bower_components/moment/min/moment.min.js"></script>
     <script src="constructors.js"></script>
+    <script src="since.jquery.js"></script>
+    <script>
+        $(function() {
+            $("p").since();
+
+        });
+    </script>
 </head>
 <body>
-    
+
+
+    <p>Now</p>
+    <p data-since="02-17-2015">2/17/2015</p>
+    <p data-since="02-01-2015">2/1/2015</p>
 </body>
 </html>
